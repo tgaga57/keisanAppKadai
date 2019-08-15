@@ -9,90 +9,115 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // 画面に表示される数字
     var numberOnScreen: Double = 0
     // 最初に入力した数字
     var  previousSelectNumber: Double = 0
     // 計算に行っていいかの判断値
     var checkMath = false
+    // 計算結果を入れる箱
+    var result: Double = 0
     // 演算子
-     var oparetion = 0
+    var operation: String = ""
+    // 入力されたにが数字どうかの真偽値
+    var inValue = false
+    // ラベルを編集できるかどうか
+    var editLabel: Bool = true
     
-    // 計算結果を表示する
+    // 計算結果を表示するラベル
     @IBOutlet weak var label: UILabel!
-    
-    // 数字ボタンの使用を可能に
-    @IBAction func numbers(_ sender: UIButton) {
-        
-        if checkMath == true {
-        // タグ番号がゼロからのため数字を合わせる
-        label.text = String(sender.tag - 1)
-        // 画面に表示される数字が上書きされる
-        numberOnScreen = Double(label.text!)!
-        checkMath = false
-          
-        } else {
-            // String(sender.tag-1) 数字が代入
-            label.text = label.text! + String(sender.tag-1)
-            // 数字が表示
-            numberOnScreen = Double(label.text!)!
-        }
-    
-    }
-    
-    
-    // 数字が表示されていた場合の処理
-    @IBAction func buttons(_ sender: UIButton) {
-        if label.text != "" && sender.tag != 11 && sender.tag != 16{   //数字が表示されていた場合の処理
-            previousSelectNumber = Double(label.text!)!
-            if sender.tag == 12{ // ÷
-                label.text = "÷";
-            }
-            else if sender.tag == 13{  // ×
-                label.text = "×";
-            }
-            else if sender.tag == 14{  // -
-                label.text = "-";
-            }
-            else if sender.tag == 15{  // +
-                label.text = "+";
-            }
-            oparetion = sender.tag
-            checkMath = true;
-        }
-        // = が押された時の処理
-        else if sender.tag == 16 
-        {
-            if oparetion == 12{
-                label.text = String(previousSelectNumber / numberOnScreen)
-            }
-            else if oparetion == 13{
-                label.text = String(previousSelectNumber * numberOnScreen)
-            }
-            else if oparetion == 14{
-                label.text = String(previousSelectNumber - numberOnScreen)
-            }
-            else if oparetion == 15{
-                label.text = String(previousSelectNumber + numberOnScreen)
-            }
-        }
-            // C が押された時の処理
-        else if sender.tag == 11{
-            label.text = ""
-            previousSelectNumber = 0;
-            numberOnScreen = 0;
-            oparetion = 0;
-        }
-    }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
-
+    
+    // クリアする関数を作ります
+    func clear() {
+        // クリアする
+        label.text = ""
+        result = 0
+        previousSelectNumber = 0
+        numberOnScreen = 0
+        operation = ""
+        inValue = false
+        editLabel = true
+        checkMath = false
+    }
+    
+    // ０−９のボタン
+    @IBAction func numbers(_ sender: UIButton) {
+        // 計算結果の上書き禁止を行います
+        if editLabel {
+            if checkMath {
+                label.text = String(sender.tag)
+                numberOnScreen = Double(label.text!)!
+                checkMath = false
+            } else {
+                label.text = label.text! + String(sender.tag)
+                numberOnScreen = Double(label.text!)!
+            }
+        }
+        inValue = true
+    }
+    
+    // 割り算　掛け算　足し算　引き算　C ＝ のボタン
+   
+    @IBAction func actions(_ sender: UIButton) {
+    
+    // ラベルを書き換えOK
+        editLabel = true
+        // c が押された時
+        if sender.currentTitle == "C" {
+            // クリアする
+            clear()
+        } else if inValue && sender.currentTitle == "="  {// = が押された時
+            // 演算子を判定して、演算を実行
+            switch operation {
+            case "÷":
+                result = previousSelectNumber / numberOnScreen
+            case "×":
+                result = previousSelectNumber * numberOnScreen
+            case "+":
+                result = previousSelectNumber + numberOnScreen
+            case "-":
+                result = previousSelectNumber - numberOnScreen
+            default:
+                break
+            }
+            // 小数点で値を分離
+            let shosus: [String] = String(result).components(separatedBy: ".")
+            
+            // 計算結果が無限ではない、かつ整数である時の処理
+            if !result.isInfinite && shosus.last == "0" {
+                // 小数点以下が0であるなら
+                label.text = String(Int(result))
+            } else {
+                // 小数点以下が0でない = 少数で表示する
+                label.text = String(result)
+            }
+            
+            // 数値が入っている
+            inValue = true
+            // 数値を足せないようにする
+            editLabel = false
+        } else { // アクションのいずれかが押されたとき
+            // 画面に表示されている数字を変数に代入
+            if inValue {
+                previousSelectNumber = Double(label.text!)!
+            }
+            // 「 = 」以外の演算子を表示
+            if sender.currentTitle != "=" {
+                label.text = sender.currentTitle
+            }
+            // 数値は入っていない
+            inValue = false
+            // 演算子を記憶
+            operation = sender.currentTitle!
+            // 計算していい
+            checkMath = true
+            
+        }
+    }
 }
-
