@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // 画面に表示される数字
     var numberOnScreen: Double = 0
     // 最初に入力した数字
-    var  previousSelectNumber: Double = 0
+    var previousSelectNumber: Double = 0
     // 計算に行っていいかの判断値
     var checkMath = false
     // 計算結果を入れる箱
@@ -63,10 +63,9 @@ class ViewController: UIViewController {
     }
     
     // 割り算　掛け算　足し算　引き算　C ＝ のボタン
-   
     @IBAction func actions(_ sender: UIButton) {
-    
-    // ラベルを書き換えOK
+        
+        // ラベルを書き換えOK
         editLabel = true
         // c が押された時
         if sender.currentTitle == "C" {
@@ -117,7 +116,6 @@ class ViewController: UIViewController {
             operation = sender.currentTitle!
             // 計算していい
             checkMath = true
-            
         }
     }
 }
