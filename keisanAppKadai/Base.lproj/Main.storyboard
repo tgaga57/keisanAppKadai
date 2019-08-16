@@ -54,7 +54,7 @@
                                                 <color key="backgroundColor" red="1" green="0.90720324080000003" blue="0.30035913949999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                                 <state key="normal" title="÷">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" red="0.29585068840000001" green="0.24488658990000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="actions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JKS-bd-fyj"/>
@@ -103,7 +103,7 @@
                                                 <color key="backgroundColor" red="0.98773107664235082" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="×">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.29585068840000001" green="0.24488658990000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="actions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slq-oi-rcH"/>
@@ -152,7 +152,7 @@
                                                 <color key="backgroundColor" red="0.9912648167207625" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <state key="normal" title="-">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.29585068840000001" green="0.24488658990000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -202,7 +202,7 @@
                                                 <color key="backgroundColor" red="1" green="0.90720324080000003" blue="0.30035913949999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="+">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.29585068840000001" green="0.24488658990000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="actions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yJa-CS-y4g"/>
